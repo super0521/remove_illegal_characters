@@ -7,8 +7,9 @@ from watchdog.events import DirCreatedEvent, FileCreatedEvent, FileSystemEventHa
 class RemoveIllegalCharacter(FileSystemEventHandler):
     def __init__(self,illegal_characters_replacement_file:Path) -> None:
         super().__init__()
+        absolute_path = Path(__file__).resolve().parent
         logging.basicConfig(
-            filename="remove illegal character.log",
+            filename=absolute_path / "remove illegal character.log",
             level=logging.INFO,
             format = "%(asctime)s | %(levelname)s | %(message)s"
         )
